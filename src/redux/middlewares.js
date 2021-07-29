@@ -7,21 +7,16 @@ export const apiMiddleware =
   (next) =>
   (action) => {
     if (action.type !== "API") return next(action);
-    const {
-      url,
-      method,
-      success,
-      data,
-      postProcessSuccess,
-      postProcessError,
-      
-    } = action.payload;
+    const { url, method, success, data, postProcessSuccess, postProcessError } =
+      action.payload;
 
     dispatch({ type: LoadingActionTypes.TOGGLE_LOADER });
 
+    let BASE_URL = "https://eltayar.herokuapp.com";
+    if (process.env.NODE_ENV === "development") {
+      BASE_URL = "http://localhost:3000";
+    }
 
-
-    const BASE_URL = "http://localhost:3000";
     const AUTH_TOKEN = getState().user.currentUser.token;
     if (AUTH_TOKEN) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${AUTH_TOKEN}`;
@@ -31,7 +26,6 @@ export const apiMiddleware =
       method,
       url: BASE_URL + url,
       data: data ? data : null,
-      
     })
       .then((response) => {
         dispatch({ type: LoadingActionTypes.TOGGLE_LOADER });
