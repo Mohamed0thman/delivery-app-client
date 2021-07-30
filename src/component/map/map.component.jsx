@@ -13,6 +13,12 @@ import {
 
 import "./map.styless.scss";
 
+import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require("worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker").default;
+
+
 function Map({ stores, handleOnChange }) {
   const [viewport, setViewport] = useState({
     width: 400,
