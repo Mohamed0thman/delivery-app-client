@@ -9,7 +9,6 @@ import { ToastContainer, Slide } from "react-toastify";
 import "./App.css";
 
 function App() {
-
   return (
     <div className="App">
       <ToastContainer
@@ -30,8 +29,8 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/stores" component={StoresPage} />
-        <Route path="/stores/:storeName" component={ProductsPage} />
+        <Route path="/stores" component={StoresPage} />
+        <Route path="/products/:storeName" component={ProductsPage} />
       </Switch>
     </div>
   );

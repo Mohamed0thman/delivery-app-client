@@ -1,31 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 
-import StoreItem from "../../component/store-item/store-item.component";
-
-import { fetchAllStores } from "../../redux/stores/stores-action";
+import CollectionsOverView from "../../component/collections-overview/collections-overview.component";
+import Collections from "../../component/collections/collections.component";
 
 import "./stores-page.scss";
 
-const StoresPage = ({ stores, fetchAllStores }) => {
-  useEffect(() => {
-    fetchAllStores();
-  }, [fetchAllStores]);
-
-  console.log(stores);
+const StoresPage = ({ match }) => {
   return (
     <div className="store-page">
-      {stores &&
-        stores.map((store) => <StoreItem key={store.id} store={store} />)}
+      <Route exact path={match.url} component={CollectionsOverView} />
+      <Route path={`${match.url}/:categoryName`} component={Collections} />
     </div>
   );
 };
-const mapStateToProps = (state) => ({
-  stores: state.stores.stores,
-});
 
-const mapDispatchToprops = (dispatch) => ({
-  fetchAllStores: () => dispatch(fetchAllStores()),
-});
-
-export default connect(mapStateToProps, mapDispatchToprops)(StoresPage);
+export default StoresPage;

@@ -9,7 +9,7 @@ const StoreItem = ({ match, store }) => {
   const { name, baseLink, image, rating } = store;
   return (
     <div className="store-item">
-      <Link to={`${match.url}/${name}`}>
+      <Link to={`/products/${name}`}>
         <div className="store-item__image">
           <img src={baseLink + "/" + image} alt="" />
         </div>
