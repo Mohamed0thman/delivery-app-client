@@ -13,7 +13,7 @@ const Collections = ({ match, stores, fetchAllByCategory }) => {
     fetchAllByCategory(match.params.categoryName);
   }, [fetchAllByCategory, match.params.categoryName]);
   return (
-    <div className="asdsad">
+    <div className="collections">
       {stores &&
         stores.map((store) => <StoreItem key={store.id} store={store} />)}
     </div>

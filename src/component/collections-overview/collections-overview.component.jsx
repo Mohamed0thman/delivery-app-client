@@ -12,7 +12,7 @@ const CollectionsOverView = ({ stores, fetchAllStores }) => {
     fetchAllStores();
   }, [fetchAllStores]);
   return (
-    <div>
+    <div className="collections">
       {stores &&
         stores.map((store) => <StoreItem key={store.id} store={store} />)}
     </div>

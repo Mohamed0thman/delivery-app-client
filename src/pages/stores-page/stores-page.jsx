@@ -8,7 +8,7 @@ import "./stores-page.scss";
 
 const StoresPage = ({ match }) => {
   return (
-    <div className="store-page">
+    <div>
       <Route exact path={match.url} component={CollectionsOverView} />
       <Route path={`${match.url}/:categoryName`} component={Collections} />
     </div>
